@@ -1,5 +1,7 @@
 const mysql = require("mysql2/promise");
 require("dotenv").config();
+console.log('USUARIO:', process.env.DB_USER);
+
 
 // Conexión a la BBDD con variables de entorno
 const getConnection = async () => {

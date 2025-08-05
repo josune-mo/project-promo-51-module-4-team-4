@@ -9,7 +9,13 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 
+// **Rutas
+const projectRoutes = require("./routes/projectsRoutes");
+app.use("/projects", projectRoutes);
+
 // Servidor
+console.log('Conectando a base de datos con usuario:', process.env.DB_USER);
+
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
