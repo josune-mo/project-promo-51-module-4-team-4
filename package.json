@@ -1,0 +1,36 @@
+{
+  "name": "project-promo-51-module-4-team-4",
+  "version": "1.0.0",
+  "description": "Proyecto Módulo 4",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josune-mo/project-promo-51-module-4-team-4.git"
+  },
+  "keywords": [
+    "mysql",
+    "aiven",
+    "node",
+    "database",
+    "projects"
+  ],
+  "author": "Grupo 4 (Chiara, Joana, Montse, Sandra y Josune)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josune-mo/project-promo-51-module-4-team-4/issues"
+  },
+  "homepage": "https://github.com/josune-mo/project-promo-51-module-4-team-4#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.3"
+  }
+}
