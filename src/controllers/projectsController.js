@@ -41,11 +41,24 @@ try{
 }
 
 const updateProject = async (req, res) => {
-//**PUT, Chiara */
-
-
-
-}
+    try {
+      const conn = await getConnection();
+      const id = req.params; 
+      const {name, slogan, repo, demo, technologies, description, image, autor, job, photo} = req.body;
+  
+      // Actualizar proyecto
+      const [result] = await conn.query(`UPDATE project SET name = ?, slogan = ?, repo = ?, demo = ?, technologies = ?, description = ?, image = ?, autor_id = ? WHERE id = ?`, [name, slogan, repo, demo, technologies, description, image, autor_id, id,]);
+      await conn.end();
+  
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: 'Project not found' });
+      }
+  
+      res.status(200).json({ message: 'Project updated successfully' });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+};  
 
 const deleteProject = async (req, res) => {
     //**Josune */
