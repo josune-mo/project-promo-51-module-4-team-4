@@ -5,12 +5,6 @@ const router = express.Router ();
 const controller = require ('../controllers/projectsController');
 
 
-//**Endpoinst para los proyectos aqui
-
-
-
-
-
 
 //**Obtenemos proyectos:
 //**Todos */
