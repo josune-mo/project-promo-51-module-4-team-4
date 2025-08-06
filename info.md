@@ -17,9 +17,9 @@ En nuestro proyecto:
 
 src/
 ├── controllers/
-│   └── projectsController.js   (Aquí está la lógica)
+│   └── projectsController.js   (Aquí está la lógica, con endpoints que normalmente se ponen en models -> projects )
 ├── routes/
-│   └── projectsRoutes.js       (Aquí van los endpoints)
+│   └── projectsRoutes.js       (Aquí van las rutas endpoints)
 ├── db/
 │   └── db.js                   (Conexión a la base de datos)
 ├── .env                        (Variables de entorno)
