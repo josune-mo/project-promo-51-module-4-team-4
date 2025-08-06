@@ -41,6 +41,7 @@ try{
 }
 
 const updateProject = async (req, res) => {
+//** PUT - Chiara */
     try {
       const conn = await getConnection();
       const id = req.params; 
