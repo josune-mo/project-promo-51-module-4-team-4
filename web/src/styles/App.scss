@@ -1,0 +1,25 @@
+@use "core/reset";
+@use "core/vars";
+@use "./layout";
+@use "./buttons";
+@use "./components/cardStyle";
+@use "./components/form";
+
+body {
+  font-family: vars.$font-secondary;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #1212b5;
+  background: radial-gradient(
+    circle,
+    rgba(18, 18, 181, 1) 33%,
+    rgba(81, 165, 184, 1) 99%
+  );
+}

@@ -121,8 +121,8 @@ const deleteProject = async (req, res) => {
 
 
 
-const updateProject = async (req, res) => {
-  //** PUT - Chiara */
+/* const updateProject = async (req, res) => {
+  
   try {
     const conn = await getConnection();
     const {id} = req.params;
@@ -139,10 +139,9 @@ const updateProject = async (req, res) => {
         autor_id = rows[0].id;
       } else {
         const [insertResults] = await conn.query(
-          "INSERT INTO autores (autor, job, photo) VALUES (?, ?, ? )",
+          "UPDATE autores (autor, job, photo) VALUES (?, ?, ? )",
           [autor, job, photo]
         );
-        autor_id = insertResults.insertId;
       }
 
     // Actualizar proyecto
@@ -160,7 +159,7 @@ const updateProject = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-};
+}; */
 
 
 

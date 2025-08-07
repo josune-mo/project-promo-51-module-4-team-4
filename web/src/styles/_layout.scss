@@ -1,0 +1,88 @@
+@use './core/vars';
+
+//NAV LOGOS
+.logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+    padding-inline: 2%;
+
+    &__p {
+        display: flex;
+        align-items: center;
+        font-weight: 100;
+        color: vars.$color-accent;
+        gap: 5px;
+    }
+
+    &__img {
+        width: 60px;
+    }
+}
+
+//HEADER
+.header {
+    padding-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    &__h1 {
+        font-family: vars.$font-primary;
+        font-size: 30px;
+    }
+  
+    &__p {
+        font-family: vars.$font-secondary;
+        font-size: 15px;
+        width: 80%;
+        padding-top: 15px;
+        color: vars.$color-accent;
+    }
+  }
+
+//FOOTER
+.footer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-size: 12px;
+
+    &__p {
+        color: vars.$color-accent;
+        padding: 10px 0;
+        text-align: center;
+        line-height: 1.2;
+    }
+  }
+
+
+//FORM PAGE
+
+.formPageStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 1024px) {
+        display: grid;
+        grid-template-columns: 4fr 2fr;
+        padding-right: 30px;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+    }
+}
+
+.leftContent,
+.rightContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

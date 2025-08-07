@@ -1,0 +1,33 @@
+@use "core/vars.scss";
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.genericBtn {
+  font-family: vars.$font-primary;
+  background-color: vars.$color-background;
+  color: white;
+  border: 0.5px solid white;
+  padding: 5px 25px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-block: 20px;
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      vars.$color-background,
+      vars.$color-gradient-mid,
+      vars.$color-background
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transform: scale(1.05);
+  }
+}
+
