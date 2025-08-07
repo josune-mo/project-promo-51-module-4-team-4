@@ -105,15 +105,12 @@ const updateProject = async (req, res) => {
       technologies,
       description,
       image,
-      autor,
-      job,
-      photo,
     } = req.body;
 
     // Actualizar proyecto
     const [result] = await conn.query(
-      `UPDATE project SET name = ?, slogan = ?, repo = ?, demo = ?, technologies = ?, description = ?, image = ?, autor_id = ? WHERE id = ?`,
-      [name, slogan, repo, demo, technologies, description, image, autor_id, id]
+      `UPDATE project SET name = ?, slogan = ?, repo = ?, demo = ?, technologies = ?, description = ?, image = ?, WHERE id = ?`,
+      [name, slogan, repo, demo, technologies, description, image, id]
     );
     await conn.end();
 
