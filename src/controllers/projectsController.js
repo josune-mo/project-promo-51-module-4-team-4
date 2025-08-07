@@ -128,7 +128,7 @@ const updateProject = async (req, res) => {
 };
 
 const deleteProject = async (req, res) => {
-  //**Josune */
+  //** DELETE - Josune */
 };
 
 //**En esta exportación si usamos llaves porque hay varias funciones a exportar */
