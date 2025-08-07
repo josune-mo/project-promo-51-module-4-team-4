@@ -1,9 +1,16 @@
-const model = require('../models/projects')
+
 const getConnection = require('../db/db');
 
 
 const getAllProjects = async (req, res) => {
-    //**Todos, Sandra*/
+ try{
+    const conn =await getConnection();
+    const [rows] = await conn.query ("SELECT * FROM project");
+    await conn.end();
+    res.status(200).json(rows);
+ } catch (error){
+    res.status(500).json({error: error.message, message: 'Error al obtener proyectos'})
+ }
 
 
 }
