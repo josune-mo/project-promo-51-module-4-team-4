@@ -16,8 +16,8 @@ router.get('/:id', controller.getProjectById);
 //**Añadir */
 router.post('/', controller.createProject);
 
-//**Actualizar*/
-router.put('/:id', controller.updateProject);
+// //**Actualizar*/
+// router.put('/:id', controller.updateProject);
 
 //**Eliminar */
 router.delete('/:id', controller.deleteProject);
