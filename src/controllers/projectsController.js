@@ -168,6 +168,6 @@ module.exports = {
   getAllProjects,
   getProjectById,
   createProject,
-  updateProject,
+  //updateProject,
   deleteProject,
 };
