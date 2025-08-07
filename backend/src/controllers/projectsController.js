@@ -48,6 +48,7 @@ const getProjectById = async (req, res) => {
 };
 
 const createProject = async (req, res) => {
+ // console.log("📩 Recibida petición POST /projects");
   try {
     const conn = await getConnection();
     const {
@@ -70,6 +71,7 @@ const createProject = async (req, res) => {
     );
 
     let autor_id;
+  
     if (rows.length > 0) {
       autor_id = rows[0].id;
     } else {
@@ -78,7 +80,16 @@ const createProject = async (req, res) => {
         [autor, job, photo]
       );
       autor_id = insertResults.insertId;
-    }
+    }  console.log ("Valores a insertar",{
+        name,
+  slogan,
+  repo,
+  demo,
+  technologies,
+  description,
+  image,
+  autor_id
+    })
     const [result] = await conn.query(
       "INSERT INTO project (name, slogan, repo, demo, technologies, description, image, autor_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       [name, slogan, repo, demo, technologies, description, image, autor_id]

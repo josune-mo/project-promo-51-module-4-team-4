@@ -16,10 +16,10 @@ function Form({ formData, setFormData }) {
 
     const dataAEnviar = {
     ...formData,
-    technology: formData.technology.map((tech) => tech.value),
+    technology: formData.technology.map((tech) => tech.value).join(","),
   };
 
-  fetch('https://dev.adalab.es/api/projectCard', {
+  fetch("http://localhost:4000/projects", {
     method: 'POST',
     body: JSON.stringify(dataAEnviar),
     headers: { 'Content-Type': 'application/json' },
@@ -176,7 +176,7 @@ function Form({ formData, setFormData }) {
             </div>
             <div className="btnContainer">
             <Link to="/cardpreview">
-              <button className="genericBtn">Subir proyecto</button>
+              <button type= "submit" className="genericBtn">Subir proyecto</button>
             </Link>
             </div>
           </div>

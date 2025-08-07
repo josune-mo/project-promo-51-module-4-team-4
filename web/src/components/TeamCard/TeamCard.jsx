@@ -33,12 +33,13 @@ function TeamCard({
           <p className="cardStyle__description">{description}</p>
 
           <div className="cardStyle__tech-list">
-            {technologies.map((tech, i) => (
-              <span key={i} className="cardStyle__tech-tag">
-                {tech}
-              </span>
-            ))}
-          </div>
+  {(Array.isArray(technologies) ? technologies : technologies.split(',')).map((tech, i) => (
+    <span key={i} className="cardStyle__tech-tag">
+      {tech.trim()}
+    </span>
+  ))}
+</div>
+
 
           <div className="cardStyle__contact-links">
             {links.map((link, i) => (

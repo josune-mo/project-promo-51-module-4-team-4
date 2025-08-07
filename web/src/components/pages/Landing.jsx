@@ -1,5 +1,6 @@
 import BtnNewProject from "../botons/BtnNewProject";
 import TeamCard from "../TeamCard/TeamCard";
+import { useState, useEffect } from "react";
 
 const imageMap = import.meta.glob("../../images/*.{jpg,png,svg}", {
   eager: true,
@@ -13,114 +14,21 @@ const getImageByName = (filename) => {
   return match?.[1] || null;
 };
 
-function landing() {
-  const team = [
-    {
-      name: "Josune",
-      role: "Full Stack Developer",
-      projectTitle: "FitSync",
-      description:
-        " Front-end lover turned API whisperer. Her React components are smoother than her coffee.",
-      technologies: ["React", "HTML", "CSS"],
-      photo: getImageByName("Josune.jpg"),
-      links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/josune-mo",
-          icon: "/GitHub.svg",
-        },
-        {
-          name: "LinkedIn",
-          url: "https://www.linkedin.com/in/josunemoralesarrieta",
-          icon: "/linkedin.svg",
-        },
-      ],
-    },
-    {
-      name: "Chiara",
-      role: "Full Stack Developer",
-      projectTitle: "BugTrackr",
-      description:
-        "Debugs like a detective and writes clean code that could make linters cry with joy. ",
-      technologies: ["React", "HTML", "CSS"],
-      photo: getImageByName("Chiara.jpg"),
-      links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/cusichia",
-          icon: "/GitHub.svg",
-        },
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/chiara-cusi-493b5a216",
-          icon: "/linkedin.svg",
-        },
-      ],
-    },
-    {
-      name: "Montse",
-      role: "Full Stack Developer",
-      projectTitle: "TaskNest",
-      description:
-        "Strategic thinker and team motivator. If Agile were a person, it would be her.",
-      technologies: ["React", "HTML", "CSS"],
-      photo: getImageByName("Montse.jpg"),
-      links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/montsemoran",
-          icon: "/GitHub.svg",
-        },
-        {
-          name: "LinkedIn",
-          url: "https://www.linkedin.com/in/montse-moran",
-          icon: "/linkedin.svg",
-        },
-      ],
-    },
-    {
-      name: "Sandra",
-      role: "Full Stack Developer",
-      projectTitle: "MoodBoard",
-      description:
-        "UX queen with an eye for detail and a knack for making apps that users actually enjoy",
-      technologies: ["React", "HTML", "CSS"],
-      photo: getImageByName("Sandra.jpg"),
-      links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/SaNdRyXu",
-          icon: "/GitHub.svg",
-        },
-        {
-          name: "LinkedIn",
-          url: "https://www.linkedin.com/in/sandra-garcia-39038528b/",
-          icon: "/linkedin.svg",
-        },
-      ],
-    },
-    {
-      name: "Joana",
-      role: "Full Stack Developer",
-      projectTitle: "EcoCart",
-      description:
-        "Back-end powerhouse with a passion for performance. Her favorite language? Whichever gets the job done.",
-      technologies: ["React", "HTML", "CSS"],
-      photo: getImageByName("Joana.jpg"),
-      links: [
-        {
-          name: "GitHub",
-          url: "https://github.com/Joana2617",
-          icon: "/GitHub.svg",
-        },
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/joana-nunes-8915b113a/",
-          icon: "/linkedin.svg",
-        },
-      ],
-    },
-  ];
+function Landing() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    //fetch('https://project-promo-51-module-4-team-4.onrender.com/projects')
+    fetch("http://localhost:4000/projects")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProjects(data);
+      })
+      .catch((error) => {
+        console.error("Error al cargar los proyectos", error);
+      });
+  }, []);
 
   return (
     <>
@@ -128,13 +36,43 @@ function landing() {
 
       <section className="team-section landingPage">
         <div className="cards-flex">
-          {team.map((member, index) => (
-            <TeamCard key={index} {...member} />
-          ))}
+          {projects.map((member, index) => {
+  const links = [];
+
+  if (member.repo) {
+    links.push({
+      name: "Repositorio",
+      url: member.repo,
+      icon: member.repo
+    });
+  }
+
+  if (member.demo) {
+    links.push({
+      name: "Demo",
+      url: member.demo,
+      icon: member.demo 
+    });
+  }
+
+  return (
+    <TeamCard
+      key={index}
+      name={member.autor}
+      role={member.job}
+      projectTitle={member.name}
+      description={member.description}
+      technologies={member.technologies.split(",")}
+      photo={member.photo}
+      links={links}
+    />
+  );
+})}
+
         </div>
       </section>
     </>
   );
 }
 
-export default landing;
+export default Landing;
