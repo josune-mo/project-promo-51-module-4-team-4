@@ -92,18 +92,63 @@ const createProject = async (req, res) => {
   }
 };
 
+const deleteProject = async (req, res) => {
+    //** DELETE - Josune */
+    try {
+      const { id } = req.params;
+      const conn = await getConnection();
+  
+      const [result] = await conn.query("DELETE FROM project WHERE id = ?", [id]);
+  
+      await conn.end();
+  
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: "Project not found" });
+      }
+  
+      res.status(200).json({ message: "Project deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
+
+
+
+
+
+
+
+
+
 const updateProject = async (req, res) => {
   //** PUT - Chiara */
   try {
     const conn = await getConnection();
-    const id = req.params;
-    const { name, slogan, repo, demo, technologies, description, image } =
+    const {id} = req.params;
+    const { name, slogan, repo, demo, technologies, description, image, autor, job, photo, } =
       req.body;
+
+      const [rows] = await conn.query(
+        "SELECT id FROM autores WHERE autor =? AND job = ?",
+        [autor, job]
+      );
+  
+      let autor_id;
+      if (rows.length > 0) {
+        autor_id = rows[0].id;
+      } else {
+        const [insertResults] = await conn.query(
+          "INSERT INTO autores (autor, job, photo) VALUES (?, ?, ? )",
+          [autor, job, photo]
+        );
+        autor_id = insertResults.insertId;
+      }
 
     // Actualizar proyecto
     const [result] = await conn.query(
-      `UPDATE project SET name = ?, slogan = ?, repo = ?, demo = ?, technologies = ?, description = ?, image = ?, WHERE id = ?`,
-      [name, slogan, repo, demo, technologies, description, image, id]
+      `UPDATE project SET name = ?, slogan = ?, repo = ?, demo = ?, technologies = ?, description = ?, image = ?, autor = ?, job = ?, photo = ? WHERE id = ?`,
+      [name, slogan, repo, demo, technologies, description, image, autor, job, photo, id]
     );
     await conn.end();
 
@@ -117,25 +162,7 @@ const updateProject = async (req, res) => {
   }
 };
 
-const deleteProject = async (req, res) => {
-  //** DELETE - Josune */
-  try {
-    const { id } = req.params;
-    const conn = await getConnection();
 
-    const [result] = await conn.query("DELETE FROM project WHERE id = ?", [id]);
-
-    await conn.end();
-
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ message: "Project not found" });
-    }
-
-    res.status(200).json({ message: "Project deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
 
 //**En esta exportación si usamos llaves porque hay varias funciones a exportar */
 module.exports = {
