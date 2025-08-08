@@ -6,7 +6,7 @@ function TeamCard({
   projectTitle,
   description,
   technologies,
-  photo,
+  image,
   links,
 }) {
   return (
@@ -14,7 +14,7 @@ function TeamCard({
       <article className="cardStyle">
         <section className="cardStyle__header">
           <img
-            src={photo}
+            src={image}
             alt={`Foto de ${name}`}
             className="cardStyle__profile-pic"
           />
@@ -65,7 +65,7 @@ TeamCard.propTypes = {
   projectTitle: PropTypes.string.isRequired,
   description: PropTypes.string,
   technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  photo: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
