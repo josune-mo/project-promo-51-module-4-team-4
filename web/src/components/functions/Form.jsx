@@ -18,8 +18,8 @@ function Form({ formData, setFormData }) {
     ...formData,
     technology: formData.technology.map((tech) => tech.value).join(","),
   };
-fetch('https://project-promo-51-module-4-team-4.onrender.com/projects',
-  //fetch("http://localhost:4000/projects", 
+//fetch('https://project-promo-51-module-4-team-4.onrender.com/add',
+  fetch("http://localhost:4000/projects/add", 
     {
     method: 'POST',
     body: JSON.stringify(dataAEnviar),
@@ -176,8 +176,12 @@ fetch('https://project-promo-51-module-4-team-4.onrender.com/projects',
               />
             </div>
             <div className="btnContainer">
-            <Link to="/cardpreview">
               <button type= "submit" className="genericBtn">Subir proyecto</button>
+            <Link to="/cardpreview">
+          <p>ver proyecto creado</p>
+            </Link>
+            <Link to="/">
+          <p>Listado deproyectos</p>
             </Link>
             </div>
           </div>

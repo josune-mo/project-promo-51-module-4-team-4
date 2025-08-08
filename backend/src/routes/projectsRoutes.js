@@ -8,13 +8,13 @@ const controller = require ('../controllers/projectsController');
 
 //**Obtenemos proyectos:
 //**Todos */
-router.get('/projects', controller.getAllProjects);
+router.get('/list', controller.getAllProjects);
 
 //**por ID */
 router.get('/:id', controller.getProjectById);
 
 //**Añadir */
-router.post('/', controller.createProject);
+router.post('/add', controller.createProject);
 
 // //**Actualizar*/
 // router.put('/:id', controller.updateProject);

@@ -18,8 +18,8 @@ function Landing() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch('https://project-promo-51-module-4-team-4.onrender.com/projects')
-    //fetch("http://localhost:4000/projects")
+  //fetch('https://project-promo-51-module-4-team-4.onrender.com/projects/list')
+    fetch("http://localhost:4000/projects/list")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -64,7 +64,7 @@ console.log ("member", member)
       projectTitle={member.name}
       description={member.description}
       technologies={member.technologies.split(",")}
-      photo={member.image}
+      image={member.image}
       links={links}
     />
   );

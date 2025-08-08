@@ -3,7 +3,7 @@ const getConnection = require("../db/db");
 const getAllProjects = async (req, res) => {
   try {
     const conn = await getConnection();
-    const [rows] = await conn.query("SELECT  project.*,  autores.autor, autores.job, autores.image FROM project JOIN autores ON project.autor_id = autores.id");
+    const [rows] = await conn.query("SELECT  project.*,  autores.autor, autores.job, autores.photo FROM project JOIN autores ON project.autor_id = autores.id");
     await conn.end();
     res.status(200).json(rows);
   } catch (error) {
@@ -24,7 +24,7 @@ const getProjectById = async (req, res) => {
       SELECT 
         p.id, p.name, p.slogan, p.repo, p.demo, p.technologies, 
         p.description, p.image, 
-        a.autor, a.job, a.image
+        a.autor, a.job, a.photo
       FROM project p
       JOIN autores a ON p.autor_id = a.id
       WHERE p.id = ?
@@ -52,47 +52,38 @@ const createProject = async (req, res) => {
   try {
     const conn = await getConnection();
     const {
-      name,
-      slogan,
-      repo,
-      demo,
-      technologies,
+      projectName,
+      projectSlogan,
+      projectRepository,
+      projectDemo,
+      technology,
       description,
-      image,
-      autor,
-      job,
-      photo,
+      projectAvatar,
+      authorName,
+      authorJob,
+      profileAvatar,
     } = req.body;
-
+console.log(req.body)
     //**Buscamos si la autora existe.. al final creo que era más viable hacer la tabla intermedia  :P */
     const [rows] = await conn.query(
       "SELECT id FROM autores WHERE autor =? AND job = ?",
-      [autor, job]
+      [authorName, authorJob]
     );
 
     let autor_id;
-  
+  console.log( rows)
     if (rows.length > 0) {
       autor_id = rows[0].id;
     } else {
       const [insertResults] = await conn.query(
-        "INSERT INTO autores (autor, job, image) VALUES (?, ?, ? )",
-        [autor, job, image]
+        "INSERT INTO autores (autor, job, photo) VALUES (?, ?, ? )",
+        [authorName, authorJob, profileAvatar]
       );
       autor_id = insertResults.insertId;
-    }  console.log ("Valores a insertar",{
-        name,
-  slogan,
-  repo,
-  demo,
-  technologies,
-  description,
-  image,
-  autor_id
-    })
+    }  
     const [result] = await conn.query(
       "INSERT INTO project (name, slogan, repo, demo, technologies, description, image, autor_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-      [name, slogan, repo, demo, technologies, description, image, autor_id]
+      [projectName, projectSlogan, projectRepository, projectDemo, technology, description, projectAvatar, autor_id]
     );
     await conn.end();
     res
