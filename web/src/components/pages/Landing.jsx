@@ -64,7 +64,7 @@ console.log ("member", member)
       projectTitle={member.name}
       description={member.description}
       technologies={member.technologies.split(",")}
-      photo={member.image}
+      photo={member.photo}
       links={links}
     />
   );
