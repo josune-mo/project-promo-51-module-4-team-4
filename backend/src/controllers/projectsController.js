@@ -48,7 +48,7 @@ const getProjectById = async (req, res) => {
 };
 
 const createProject = async (req, res) => {
- // console.log("📩 Recibida petición POST /projects");
+  console.log(" Recibida petición POST /projects");
   try {
     const conn = await getConnection();
     const {
