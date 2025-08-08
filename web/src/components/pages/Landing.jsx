@@ -54,7 +54,7 @@ function Landing() {
       icon: "/project-promo-51-module-3-team-4/linkedin.svg"
     });
   }
-console.log("PHOTO:", member.photo);
+console.log("image:", member.image);
 console.log ("member", member)
   return (
     <TeamCard

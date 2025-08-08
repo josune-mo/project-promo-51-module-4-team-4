@@ -24,7 +24,7 @@ const getProjectById = async (req, res) => {
       SELECT 
         p.id, p.name, p.slogan, p.repo, p.demo, p.technologies, 
         p.description, p.image, 
-        a.autor, a.job, a.photo
+        a.autor, a.job, a.image
       FROM project p
       JOIN autores a ON p.autor_id = a.id
       WHERE p.id = ?
@@ -76,8 +76,8 @@ const createProject = async (req, res) => {
       autor_id = rows[0].id;
     } else {
       const [insertResults] = await conn.query(
-        "INSERT INTO autores (autor, job, photo) VALUES (?, ?, ? )",
-        [autor, job, photo]
+        "INSERT INTO autores (autor, job, image) VALUES (?, ?, ? )",
+        [autor, job, image]
       );
       autor_id = insertResults.insertId;
     }  console.log ("Valores a insertar",{
