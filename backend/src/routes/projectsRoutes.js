@@ -8,7 +8,7 @@ const controller = require ('../controllers/projectsController');
 
 //**Obtenemos proyectos:
 //**Todos */
-router.get('/', controller.getAllProjects);
+router.get('/projects', controller.getAllProjects);
 
 //**por ID */
 router.get('/:id', controller.getProjectById);

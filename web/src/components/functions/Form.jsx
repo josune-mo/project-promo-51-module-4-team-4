@@ -18,8 +18,9 @@ function Form({ formData, setFormData }) {
     ...formData,
     technology: formData.technology.map((tech) => tech.value).join(","),
   };
-
-  fetch("http://localhost:4000/projects", {
+fetch('https://project-promo-51-module-4-team-4.onrender.com/projects',
+  //fetch("http://localhost:4000/projects", 
+    {
     method: 'POST',
     body: JSON.stringify(dataAEnviar),
     headers: { 'Content-Type': 'application/json' },

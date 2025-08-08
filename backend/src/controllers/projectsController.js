@@ -3,7 +3,7 @@ const getConnection = require("../db/db");
 const getAllProjects = async (req, res) => {
   try {
     const conn = await getConnection();
-    const [rows] = await conn.query("SELECT * FROM project");
+    const [rows] = await conn.query("SELECT  project.*,  autores.autor, autores.job, autores.photo FROM project JOIN autores ON project.autor_id = autores.id");
     await conn.end();
     res.status(200).json(rows);
   } catch (error) {

@@ -18,8 +18,8 @@ function Landing() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    //fetch('https://project-promo-51-module-4-team-4.onrender.com/projects')
-    fetch("http://localhost:4000/projects")
+    fetch('https://project-promo-51-module-4-team-4.onrender.com/projects')
+    //fetch("http://localhost:4000/projects")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -43,7 +43,7 @@ function Landing() {
     links.push({
       name: "Repositorio",
       url: member.repo,
-      icon: member.repo
+      icon: "/project-promo-51-module-3-team-4/GitHub.svg"
     });
   }
 
@@ -51,10 +51,11 @@ function Landing() {
     links.push({
       name: "Demo",
       url: member.demo,
-      icon: member.demo 
+      icon: "/project-promo-51-module-3-team-4/linkedin.svg"
     });
   }
-
+console.log("PHOTO:", member.photo);
+console.log ("member", member)
   return (
     <TeamCard
       key={index}
