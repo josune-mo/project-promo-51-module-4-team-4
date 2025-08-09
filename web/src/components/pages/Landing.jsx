@@ -18,8 +18,7 @@ function Landing() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-  //fetch('https://project-promo-51-module-4-team-4.onrender.com/projects/list')
-    fetch("http://localhost:4000/projects/list")
+  fetch('https://project-promo-51-module-4-team-4-65ob.onrender.com/projects/list')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

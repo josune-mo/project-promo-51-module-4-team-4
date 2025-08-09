@@ -15,22 +15,20 @@ function Form({ formData, setFormData }) {
     e.preventDefault();
 
     const dataAEnviar = {
-    ...formData,
-    technology: formData.technology.map((tech) => tech.value).join(","),
+      ...formData,
+      technology: formData.technology.map((tech) => tech.value).join(","),
+    };
+    fetch("https://project-promo-51-module-4-team-4-65ob.onrender.com/add", {
+      method: "POST",
+      body: JSON.stringify(dataAEnviar),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((dataResponse) => {
+        // Mirar que devuelve esa petición y que podemos hacer con ella
+        console.log(dataResponse);
+      });
   };
-//fetch('https://project-promo-51-module-4-team-4.onrender.com/add',
-  fetch("http://localhost:4000/projects/add", 
-    {
-    method: 'POST',
-    body: JSON.stringify(dataAEnviar),
-    headers: { 'Content-Type': 'application/json' },
-  })
-    .then((response) => response.json())
-    .then((dataResponse) => {
-      // Mirar que devuelve esa petición y que podemos hacer con ella
-      console.log(dataResponse);
-    });
-};
 
   const techOptions = [
     { value: "javascript", label: "JavaScript" },
@@ -176,20 +174,22 @@ function Form({ formData, setFormData }) {
               />
             </div>
             <div className="btnContainer">
-              <button type= "submit" className="genericBtn">Subir proyecto</button>
-            <Link to="/cardpreview">
-          <p className="genericBtn">ver proyecto creado</p>
-            </Link>
-            <Link to="/">
-          <p className="genericBtn">Listado de proyectos</p>
-            </Link>
+              <button type="submit" className="genericBtn">
+                Subir proyecto
+              </button>
+              <Link to="/cardpreview">
+                <p className="genericBtn">ver proyecto creado</p>
+              </Link>
+              <Link to="/">
+                <p className="genericBtn">Listado de proyectos</p>
+              </Link>
             </div>
           </div>
         </form>
       </div>
     </>
   );
-};
+}
 
 Form.propTypes = {
   formData: PropTypes.shape({
