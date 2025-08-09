@@ -23,5 +23,5 @@ app.listen(PORT, () => {
 });
 
 // Servidor de estaticos 
-const serverStatic = express.static('./dist');
+const serverStatic = express.static('./frontend');
 app.use(serverStatic);
