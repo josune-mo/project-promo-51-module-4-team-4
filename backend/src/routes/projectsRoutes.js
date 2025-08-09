@@ -1,25 +1,20 @@
 const express = require ('express');
 const router = express.Router ();
 
-//**Importamos el controlador 
+// Importamos el controlador 
 const controller = require ('../controllers/projectsController');
 
-
-
-//**Obtenemos proyectos:
-//**Todos */
+// Obtenemos proyectos:
+// Todos
 router.get('/list', controller.getAllProjects);
 
-//**por ID */
+// por ID
 router.get('/:id', controller.getProjectById);
 
-//**Añadir */
+// Añadir
 router.post('/add', controller.createProject);
 
-// //**Actualizar*/
-// router.put('/:id', controller.updateProject);
-
-//**Eliminar */
+// Eliminar
 router.delete('/:id', controller.deleteProject);
 
 module.exports = router;

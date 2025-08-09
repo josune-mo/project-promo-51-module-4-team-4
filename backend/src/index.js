@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 
-// **Rutas
+// Rutas
 const projectRoutes = require("./routes/projectsRoutes");
 app.use("/projects", projectRoutes);
 
