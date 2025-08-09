@@ -18,7 +18,9 @@ function Landing() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-  fetch('https://project-promo-51-module-4-team-4-65ob.onrender.com/projects/list')
+    fetch(
+      "https://project-promo-51-module-4-team-4-65ob.onrender.com/projects/list"
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -36,39 +38,38 @@ function Landing() {
       <section className="team-section landingPage">
         <div className="cards-flex">
           {projects.map((member, index) => {
-  const links = [];
+            const links = [];
 
-  if (member.repo) {
-    links.push({
-      name: "Repositorio",
-      url: member.repo,
-      icon: "/project-promo-51-module-3-team-4/GitHub.svg"
-    });
-  }
+            if (member.repo) {
+              links.push({
+                name: "Repositorio",
+                url: member.repo,
+                icon: "/project-promo-51-module-3-team-4/GitHub.svg",
+              });
+            }
 
-  if (member.demo) {
-    links.push({
-      name: "Demo",
-      url: member.demo,
-      icon: "/project-promo-51-module-3-team-4/linkedin.svg"
-    });
-  }
-console.log("image:", member.image);
-console.log ("member", member)
-  return (
-    <TeamCard
-      key={index}
-      name={member.autor}
-      role={member.job}
-      projectTitle={member.name}
-      description={member.description}
-      technologies={member.technologies.split(",")}
-      image={member.image}
-      links={links}
-    />
-  );
-})}
-
+            if (member.demo) {
+              links.push({
+                name: "Demo",
+                url: member.demo,
+                icon: "/project-promo-51-module-3-team-4/enlace.png",
+              });
+            }
+            console.log("image:", member.image);
+            console.log("member", member);
+            return (
+              <TeamCard
+                key={index}
+                name={member.autor}
+                role={member.job}
+                projectTitle={member.name}
+                description={member.description}
+                technologies={member.technologies.split(",")}
+                image={member.image}
+                links={links}
+              />
+            );
+          })}
         </div>
       </section>
     </>

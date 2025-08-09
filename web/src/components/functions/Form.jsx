@@ -1,9 +1,12 @@
+import React, { useState } from "react";
 import GetAvatar from "../refactorcomponent/GetAvatar";
 import PropTypes from "prop-types";
 import Select from "react-select";
 import { Link } from "react-router-dom";
 
 function Form({ formData, setFormData }) {
+  const [successMsg, setSuccessMsg] = useState(""); // Estado para el mensaje
+
   const handleInput = (ev) => {
     setFormData({
       ...formData,
@@ -18,15 +21,16 @@ function Form({ formData, setFormData }) {
       ...formData,
       technology: formData.technology.map((tech) => tech.value).join(","),
     };
-    fetch("https://project-promo-51-module-4-team-4-65ob.onrender.com/add", {
+    fetch("https://project-promo-51-module-4-team-4-65ob.onrender.com/projects/add", {
       method: "POST",
       body: JSON.stringify(dataAEnviar),
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => response.json())
       .then((dataResponse) => {
-        // Mirar que devuelve esa petición y que podemos hacer con ella
-        console.log(dataResponse);
+        if (dataResponse.id) {
+          setSuccessMsg("¡Proyecto subido!");
+        }
       });
   };
 
@@ -42,6 +46,7 @@ function Form({ formData, setFormData }) {
   return (
     <>
       <div className="form__wrapper">
+        {successMsg && <div className="success-message">{successMsg}</div>}
         <form className="form__container" onSubmit={handleSubmit}>
           <div className="form__title">
             <h2>Información</h2>
@@ -151,7 +156,7 @@ function Form({ formData, setFormData }) {
               onChange={handleInput}
             />
 
-            <div className="btnContainer">
+            <div className="btnContainer-1">
               {/* Foto de perfil */}
               <GetAvatar
                 avatar={formData.profileAvatar}
@@ -163,7 +168,7 @@ function Form({ formData, setFormData }) {
               />
             </div>
             {/* Foto del proyecto */}
-            <div className="btnContainer">
+            <div className="btnContainer-1">
               <GetAvatar
                 avatar={formData.projectAvatar}
                 updateAvatar={(img) =>
@@ -173,12 +178,12 @@ function Form({ formData, setFormData }) {
                 hidePreview={true}
               />
             </div>
-            <div className="btnContainer">
+            <div className="btnContainer-2">
               <button type="submit" className="genericBtn">
                 Subir proyecto
               </button>
               <Link to="/cardpreview">
-                <p className="genericBtn">ver proyecto creado</p>
+                <p className="genericBtn">Ver proyecto creado</p>
               </Link>
               <Link to="/">
                 <p className="genericBtn">Listado de proyectos</p>

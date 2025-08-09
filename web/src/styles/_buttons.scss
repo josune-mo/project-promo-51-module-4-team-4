@@ -2,8 +2,30 @@
 
 .btnContainer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin: 0.5rem;
+  gap: 0.3rem;
+}
+
+.btnContainer-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  gap: 0.3rem;
+}
+
+.btnContainer-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  gap: 0.3rem;
+
 }
 
 .genericBtn {
@@ -11,7 +33,8 @@
   background-color: vars.$color-background;
   color: white;
   border: 0.5px solid white;
-  padding: 5px 25px;
+  padding: 0.5rem 1rem;
+  text-align: center;
   border-radius: 10px;
   overflow: hidden;
   transition: color 0.3s ease;
