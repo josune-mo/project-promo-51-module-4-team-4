@@ -22,3 +22,6 @@ app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
 
+// Servidor de estaticos 
+const serverStatic = express.static('./dist');
+app.use(serverStatic);
