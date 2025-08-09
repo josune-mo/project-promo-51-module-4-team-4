@@ -178,10 +178,10 @@ function Form({ formData, setFormData }) {
             <div className="btnContainer">
               <button type= "submit" className="genericBtn">Subir proyecto</button>
             <Link to="/cardpreview">
-          <p>ver proyecto creado</p>
+          <p className="genericBtn">ver proyecto creado</p>
             </Link>
             <Link to="/">
-          <p>Listado deproyectos</p>
+          <p className="genericBtn">Listado de proyectos</p>
             </Link>
             </div>
           </div>
