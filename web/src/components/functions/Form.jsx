@@ -46,7 +46,6 @@ function Form({ formData, setFormData }) {
   return (
     <>
       <div className="form__wrapper">
-        {successMsg && <div className="success-message">{successMsg}</div>}
         <form className="form__container" onSubmit={handleSubmit}>
           <div className="form__title">
             <h2>Información</h2>
@@ -189,6 +188,9 @@ function Form({ formData, setFormData }) {
                 <p className="genericBtn">Listado de proyectos</p>
               </Link>
             </div>
+            {successMsg && (
+              <div className="success-message">{successMsg}</div>
+            )}
           </div>
         </form>
       </div>

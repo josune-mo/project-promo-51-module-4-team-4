@@ -1,8 +1,10 @@
 import defaultAvatar from "../../images/default-avatar.svg";
 import defaultProject from "../../images/project-default.png";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 function CardPreview({ formData }) {
+  const navigate = useNavigate();
   const {
     projectName,
     projectSlogan,
@@ -79,6 +81,14 @@ function CardPreview({ formData }) {
           </div>
         </section>
       </article>
+      <button
+        className="genericBtn"
+        style={{ margin: "2rem auto 0", display: "block" }}
+        onClick={() => navigate(-1)}
+        type="button"
+      >
+        Volver atrás
+      </button>
     </div>
   );
 }
