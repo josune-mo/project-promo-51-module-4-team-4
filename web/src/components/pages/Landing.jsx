@@ -44,7 +44,7 @@ function Landing() {
               links.push({
                 name: "Repositorio",
                 url: member.repo,
-                icon: "/project-promo-51-module-3-team-4/GitHub.svg",
+                icon: "/GitHub.svg",
               });
             }
 
@@ -52,7 +52,7 @@ function Landing() {
               links.push({
                 name: "Demo",
                 url: member.demo,
-                icon: "/project-promo-51-module-3-team-4/enlace.png",
+                icon: "/enlace.png",
               });
             }
             console.log("image:", member.image);
